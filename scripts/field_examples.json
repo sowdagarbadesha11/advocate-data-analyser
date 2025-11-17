@@ -1,0 +1,18 @@
+{
+  "user_id": null,
+  "name": "Toni Grady",
+  "email": "invalid-email",
+  "instagram_handle": "@Ocie.Schiller-Gerhold48",
+  "tiktok_handle": "#error_handle",
+  "joined_at": "not-a-date",
+  "advocacy_programs.program_id": null,
+  "advocacy_programs.brand": null,
+  "advocacy_programs.tasks_completed.task_id": null,
+  "advocacy_programs.tasks_completed.platform": null,
+  "advocacy_programs.tasks_completed.post_url": null,
+  "advocacy_programs.tasks_completed.likes": null,
+  "advocacy_programs.tasks_completed.comments": null,
+  "advocacy_programs.tasks_completed.shares": null,
+  "advocacy_programs.tasks_completed.reach": null,
+  "advocacy_programs.total_sales_attributed": null
+}

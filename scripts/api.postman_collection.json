@@ -1,0 +1,243 @@
+{
+	"info": {
+		"_postman_id": "3e24d479-a2a0-404f-a2e4-61d7bfd1fe32",
+		"name": "Duel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50106158",
+		"_collection_link": "https://sowdagarbadesha-2198381.postman.co/workspace/Sowdagar-Badesha's-Workspace~20d86815-3f20-4009-8852-006a7c0ea8ce/collection/50106158-3e24d479-a2a0-404f-a2e4-61d7bfd1fe32?action=share&source=collection_link&creator=50106158"
+	},
+	"item": [
+		{
+			"name": "user",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "advocate-data-analyser",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/users/d8a2e0a7-f3ba-4848-a632-2a76bfa3f32b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"d8a2e0a7-f3ba-4848-a632-2a76bfa3f32b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "top-advocates (conversions)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "advocate-data-analyser",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/metrics/top-advocates?limit=5&metric=conversions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"metrics",
+						"top-advocates"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "metric",
+							"value": "conversions"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "top-advocates (engagement)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "advocate-data-analyser",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/metrics/top-advocates?limit=5&metric=engagement",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"metrics",
+						"top-advocates"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "metric",
+							"value": "engagement"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "brand-performance",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "advocate-data-analyser",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/metrics/brands/performance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"metrics",
+						"brands",
+						"performance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "outliers (sales)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "advocate-data-analyser",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/metrics/outliers?metric=sales&stddev=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"metrics",
+						"outliers"
+					],
+					"query": [
+						{
+							"key": "metric",
+							"value": "sales"
+						},
+						{
+							"key": "stddev",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "outliers (engagement)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/metrics/outliers?metric=engagement",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"metrics",
+						"outliers"
+					],
+					"query": [
+						{
+							"key": "metric",
+							"value": "engagement"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

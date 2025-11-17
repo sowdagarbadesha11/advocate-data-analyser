@@ -1,0 +1,58 @@
+{
+  "user_id": [
+    "null",
+    "str"
+  ],
+  "name": [
+    "str"
+  ],
+  "email": [
+    "str"
+  ],
+  "instagram_handle": [
+    "null",
+    "str"
+  ],
+  "tiktok_handle": [
+    "str"
+  ],
+  "joined_at": [
+    "str"
+  ],
+  "advocacy_programs.program_id": [
+    "str"
+  ],
+  "advocacy_programs.brand": [
+    "int",
+    "str"
+  ],
+  "advocacy_programs.tasks_completed.task_id": [
+    "null",
+    "str"
+  ],
+  "advocacy_programs.tasks_completed.platform": [
+    "int",
+    "str"
+  ],
+  "advocacy_programs.tasks_completed.post_url": [
+    "str"
+  ],
+  "advocacy_programs.tasks_completed.likes": [
+    "int",
+    "str"
+  ],
+  "advocacy_programs.tasks_completed.comments": [
+    "int",
+    "null"
+  ],
+  "advocacy_programs.tasks_completed.shares": [
+    "int"
+  ],
+  "advocacy_programs.tasks_completed.reach": [
+    "int"
+  ],
+  "advocacy_programs.total_sales_attributed": [
+    "float",
+    "str"
+  ]
+}

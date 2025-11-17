@@ -1,0 +1,36 @@
+[project]
+name = "advocate-data-analyser"
+version = "0.1.0"
+description = "This repository contains my implementation of the Duel candidate take-home task."
+requires-python = ">=3.14"
+dependencies = [
+    "bcrypt>=5.0.0",
+    "fastapi>=0.121.2",
+    "json5>=0.12.1",
+    "numpy>=2.3.5",
+    "python-dotenv>=1.2.1",
+    "email-validator>=2.3.0",
+    "pydantic>=2.12.4",
+    "pymongo>=4.15.4",
+    "uvicorn>=0.38.0",
+    "tqdm>=4.67.1",
+]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "mongomock>=4.3.0",
+    "pytest>=9.0.1",
+    "pytest-cov>=7.0.0",
+    "pytest-html>=4.1.1",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.uv]
+package = true
+
+[project.scripts]
+ingest-data = "src.pipeline.advocate_pipeline:main"
+start-api = "src.server.start:main"

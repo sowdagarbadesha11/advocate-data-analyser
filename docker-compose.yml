@@ -1,0 +1,9 @@
+services:
+  mongodb:
+    restart: "on-failure"
+    image: mongo:8.2.1
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: advocate_ingester
+    ports:
+      - "27017:27017"

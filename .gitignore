@@ -1,0 +1,8 @@
+# Virtual environments
+.venv
+.idea
+#Build
+advocate_data_analyser.egg-info
+.coverage
+.pytest_cache
+*__pycache__*
