@@ -1,5 +1,5 @@
 """
- Copyright Dual 2025
+ Copyright Duel 2025
 """
 
 import argparse
@@ -7,12 +7,21 @@ import logging
 from pathlib import Path
 
 from src.pipeline.advocate_ingester import AdvocateIngester
-
+logger = logging.getLogger(__name__)
 
 class AdvocatePipeline:
+    """
+    Manages the advocate ingestion pipeline.
+    """
 
     @staticmethod
     def _configure_logging(verbosity: int) -> None:
+        """
+        Configures the logging system for the application based on the provided verbosity level.
+        This method determines the log level and sets up the logging format accordingly.
+
+        :param verbosity: An integer representing the verbosity level for logging.
+        """
         level = logging.WARNING
         if verbosity == 1:
             level = logging.INFO
@@ -26,6 +35,10 @@ class AdvocatePipeline:
 
     @staticmethod
     def _parse_args() -> argparse.Namespace:
+        """
+        Parses command-line arguments for the advocate ingestion pipeline.
+        :return: Parsed command-line arguments
+        """
         parser = argparse.ArgumentParser(
             description="Run the advocate ingestion pipeline.",
         )
@@ -44,8 +57,8 @@ class AdvocatePipeline:
         )
         parser.add_argument(
             "--dry-run",
-            type=bool,
-            help="Only validate and collect stats without persisting records to MongoDB",
+            action="store_true",
+            help="Only validate and collect stats without persisting records to MongoDB.",
         )
         parser.add_argument(
             "-v",
@@ -59,6 +72,10 @@ class AdvocatePipeline:
 
 
     def run(self) -> None:
+        """
+        Parses command-line arguments, configures logging, and executes the AdvocateIngester to process
+        files in the specified directory. Outputs a summary of the ingestion process upon completion.
+        """
         # Parse command line arguments
         args = AdvocatePipeline._parse_args()
         AdvocatePipeline._configure_logging(args.verbose)
@@ -71,15 +88,15 @@ class AdvocatePipeline:
         stats = ingester.run()
 
         # Simple summary output
-        print(
-            f"Ingest finished. "
-            f"files_seen={stats.files_seen}, "
-            f"files_parsed={stats.files_parsed}, "
-            f"files_skipped={stats.files_skipped}, "
-            f"records_valid={stats.records_valid}, "
-            f"records_invalid={stats.records_invalid}",
+        logger.info(
+            "Ingest complete: files_seen=%d, files_parsed=%d, files_skipped=%d, "
+            "records_valid=%d, records_invalid=%d",
+            stats.files_seen,
+            stats.files_parsed,
+            stats.files_skipped,
+            stats.records_valid,
+            stats.records_invalid,
         )
-       # print(f"Total advocates loaded: {len(stats.advocates_loaded)}")
 
 def main():
     AdvocatePipeline().run()

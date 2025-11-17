@@ -1,5 +1,5 @@
 """
- Copyright Dual 2025
+ Copyright Duel 2025
 """
 from pymongo import MongoClient
 from pymongo.errors import PyMongoError

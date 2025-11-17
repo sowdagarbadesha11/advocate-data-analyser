@@ -1,5 +1,5 @@
 """
- Copyright Dual 2025
+ Copyright Duel 2025
 """
 
 import json5
@@ -37,6 +37,7 @@ class AdvocateIngester:
         self.advocates: List[Advocate] = []
         self.stats = IngestStats()
         self.write_to_datastore = write_to_datastore
+        self.datastore = None
         if self.write_to_datastore:
             self.datastore = DatastoreManager(MongoDatastore())
         self.max_workers = max_workers
@@ -245,19 +246,13 @@ class AdvocateIngester:
                 model = self._validate_advocate(cleaned)
             except ValidationError as exc:
                 self.stats.records_invalid += 1
-                # # High-level summary
-                # logger.warning(
-                #     "Validation failed for record in %s: %s",
-                #     path,
-                #     exc,
-                # )
-                # # Structured details for debugging/cleaning rules
-                # logger.debug(
-                #     "Validation errors for %s: errors=%s, payload=%r",
-                #     path,
-                #     exc.errors(),
-                #     cleaned,
-                # )
+                # Log validation errors from pydantic
+                logger.debug(
+                    "Validation errors for %s: errors=%s, payload=%r",
+                    path,
+                    exc.errors(),
+                    cleaned,
+                )
                 # Write malformed record to sidecar directory
                 searlised_dates_data = CleaningUtils.serialise_dates(cleaned)
                 self._write_failed_validation_record(path, searlised_dates_data, exc)
@@ -278,7 +273,11 @@ class AdvocateIngester:
                  number of files seen, parsed, skipped, and counts of valid or invalid records.
         :rtype: IngestStats
         """
-        logger.info(f"Starting ingest from {self.ingest_dir}")
+        start_message = f"Starting ingest from {self.ingest_dir}"
+        if not self.write_to_datastore:
+            start_message += " (dry-run mode)"
+        logger.info(start_message)
+
         self.advocates.clear()
         # Reset stats
         self.stats = IngestStats()
@@ -312,15 +311,5 @@ class AdvocateIngester:
         if batch and self.datastore:
             self.datastore.add_advocates(batch)
             batch.clear()
-
-        logger.info(
-            "Ingest complete: files_seen=%d, files_parsed=%d, files_skipped=%d, "
-            "records_valid=%d, records_invalid=%d",
-            self.stats.files_seen,
-            self.stats.files_parsed,
-            self.stats.files_skipped,
-            self.stats.records_valid,
-            self.stats.records_invalid,
-        )
 
         return self.stats

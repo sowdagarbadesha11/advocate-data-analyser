@@ -70,7 +70,8 @@ Start the ingester (place the raw data in a folder such as `data/raw`)
 ```
 uv run ingest-data --ingest-dir data\raw -v
 ```
-Start the api (available at http://localhost:8000). See `\scripts\api.postman_collection.json` for sample requests.
+Start the api (available at http://localhost:8000). See `\scripts\api.postman_collection.json` for sample requests. This 
+has basic auth enabled with username `admin` and password `advocate-data-analyser`.
 ```
 uv run start-api
 ```
@@ -114,7 +115,7 @@ This would showcase the data in a simple dashboard, written in Angular or React,
 - Add HTTPS to the API (LetsEncrypt)
 
 ### Testing
-- Complete unit testing for complete line coverage.
+- Complete unit testing for complete line coverage
 - Expand test suite including integration tests
 
 ### Data model:
