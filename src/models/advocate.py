@@ -1,7 +1,6 @@
 """
  Copyright Duel 2025
 """
-from __future__ import annotations
 
 from datetime import datetime
 import logging
@@ -41,12 +40,9 @@ class Advocate(BaseModel):
     @staticmethod
     def _clean_handle(value: Optional[str]) -> Optional[str]:
         """
-        Normalises social handles into a clean format:
-        - Returns None for empty input
-        - Strips whitespace
-        - Forces lowercase
-        - Removes invalid characters
-        - Ensures leading '@'
+        Cleans and normalizes a social media handle provided as input.
+        :param value: The social media handle to be cleaned and normalized.
+        :return: The cleaned and normalized social media handle, or None if invalid.
         """
         if not value:
             return None

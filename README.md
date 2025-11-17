@@ -79,7 +79,7 @@ uv run start-api
 ## Methodology
 1. Discover a possible data schema using AI-generated script:
 ```
-uv run script/generate_schema.py
+uv run scripts/generate_schema.py
 ```
 2. Populate Pydantic models based on the inferred schema, using `extra="allow"` to safely accept and inspect unknown fields during exploration.
 3. Write unit tests for the models, test against clean and malformed data.
@@ -108,11 +108,11 @@ This would showcase the data in a simple dashboard, written in Angular or React,
 - Program performance summaries
 - Advocate profiles
 
-### CI / CD
-- Add CI pipeline (linting, tests, security checks)
+### CI/CD
+- Add Gitlab CI/CD pipeline (linting, tests, security checks, and publishing the analyser as a Docker image)
 
 ### Security 
-- Add HTTPS to the API (LetsEncrypt)
+- Add HTTPS to the API (e.g. LetsEncrypt or self-signed for local development)
 
 ### Testing
 - Complete unit testing for complete line coverage
@@ -131,17 +131,16 @@ This would showcase the data in a simple dashboard, written in Angular or React,
 
 ### Optimisations
 - Run auto-profiling on ingestion to benchmark slow fields
+- Json5 is slow, explore alternatives
 
 ### Logging
 - Add robust logging (and logging to file) and metrics instrumentation
 - Add monitoring (e.g. Prometheus)
 
 ### Pipeline scaling (beyond MVP)
-If this pipeline were deployed in a production environment processing millions of records, it could be evolved into a 
-fully distributed ingestion and analytics system. Key areas for extension include:
-
-- Move from local batch ingestion to a horizontally scalable streaming architecture (Kafka / Kinesis), enabling near-real-time processing, enrichment, and validation.
-- Introduce a dead-letter queue (DLQ) for malformed or unprocessable records, enabling operators to inspect and reprocess failures without interrupting the main pipeline.
+If this pipeline were deployed in a production environment processing millions of records, it could be evolved into a fully distributed ingestion and analytics system. Key areas for extension include:
+- Move from local batch ingestion to a horizontally scalable streaming architecture (Kafka / Kinesis), enabling near-real-time processing, enrichment, and validation
+- Introduce a dead-letter queue (DLQ) for malformed or unprocessable records, enabling operators to inspect and reprocess failures without interrupting the main pipeline
 - Schedule ETL jobs, periodic recomputation, and downstream model updates using tools like Airflow
-- Place FastAPI behind a load balancer to improve performance and scalability with autoscaling 
+- Place FastAPI behind a load balancer to improve performance and scalability with autoscaling
 
